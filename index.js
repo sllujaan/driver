@@ -8,8 +8,6 @@ const btnDisableCloseOnOutsideClick = document.querySelectorAll(".btn-disable-cl
 const btnCreatingFeatureIntroductions = document.querySelectorAll(".btn-creating-feature-introductions")[0];
 const btnWithoutOverlay = document.querySelectorAll(".btn-without-overlay")[0];
 
-
-
 const driver = new Driver();
 
 
@@ -35,6 +33,7 @@ btnWithPopover.addEventListener("click", e => {
 // creating-feature-introductions
 // without-overlay
 btnPopoverPositioning.addEventListener("click", e => {
+    const driver = new Driver();
     driver.highlight({
         element: '#popover-positioning',
         popover: {
@@ -43,7 +42,7 @@ btnPopoverPositioning.addEventListener("click", e => {
             // position can be left, left-center, left-bottom, top,
             // top-center, top-right, right, right-center, right-bottom,
             // bottom, bottom-center, bottom-right, mid-center
-            position: 'left',
+            position: 'top',
         }
     });
 });
@@ -72,16 +71,17 @@ btnDisableCloseOnOutsideClick.addEventListener("click", e => {
 });
 
 btnCreatingFeatureIntroductions.addEventListener("click", e => {
+    e.stopPropagation();
     const driver = new Driver();
     // Define the steps for introduction
     driver.defineSteps([
         {
             element: '#first-element-introduction',
             popover: {
-                className: 'first-step-popover-class',
+                
                 title: 'Title on Popover',
                 description: 'Body of the popover',
-                position: 'left'
+                position: 'top'
             }
         },
         {
@@ -97,16 +97,16 @@ btnCreatingFeatureIntroductions.addEventListener("click", e => {
             popover: {
                 title: 'Title on Popover',
                 description: 'Body of the popover',
-                position: 'right'
+                position: 'bottom'
             }
         },
     ]);
     // Start the introduction
     driver.start();
 });
-btnCreatePost.addEventListener("click", e => {
-    driver.highlight('#create-post');
-});
+// btnCreatePost.addEventListener("click", e => {
+//     driver.highlight('#create-post');
+// });
 btnWithoutOverlay.addEventListener("click", e => {
     const driver = new Driver({
         opacity: 0,
